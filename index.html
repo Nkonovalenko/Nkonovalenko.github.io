@@ -1,226 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">	
-    <!-- OPTIONAL: description -->
-    <meta name="description" content="This is a resume website for Nicholas Konovalenko">
-    <!-- OPTIONAL: author -->
-    <meta name="author" content="Nicholas Konovalenko">
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="icon.png" />
+<html>
+<head>
+	<title>Nicholas Konovalenko</title>
+	<!-- Link CSS Stylsheet -->
+	<link rel="stylesheet" href="style.css">
 
-		<!-- EDIT: title -->
-    <title>Nicholas Konovalenko</title>
+	<!-- Link Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- Link JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  crossorigin="anonymous"></script>
 
-    <!-- Link the main.css stylesheet -->
-    <link href="css/main.css" rel="stylesheet">
-    
-    <!-- OPTIONAL: Google Fonts (don't forget to edit main.css also) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
 
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+	<!-- Link Font Awesome stylesheet CDN -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+<!-------------------- HEADER SECTION -------------------->
+	<section id="header">
+		<div class="container text-center">
+			<div class="user-box">
+
+				<!-------- EDIT THE LINK TO USER IMAGE HERE ----->
+				<img src="img/user.jpg">
+				<h1>Nicholas Konovalenko</h1>
+				<p>Developer</p>
+			</LOREM IPSUM INSERT TEXT HEREdiv>
+		</div>	
+
+		<div class="scroll-btn">
+			<div class="scroll-bar"><a href=""><span></span></a></div>
+		</div>
+	</section>
 
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-  </head>
+<!-------------------- USER INFO SECTION -------------------->
+<section id="user-info">
 
-  <body>
-	
-	<div id="header" class="header">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-12">
-					<!-- EDIT: name -->
-					<h1>Nicholas Konovalenko</h1>
-					<!-- EDIT: title | email -->
-					<h3>Developer | <a href="mailto:nkono@umich.edu" target="_blank">nkono@umich.edu</a></h3>
-				</div><!--/.col-lg-12 -->
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/.header -->
-	
+<div class="nav-bar">
+	<nav class="navbar navbar-expand-lg">
+		<!--- INSERT LOGO HERE --->
+	  <a class="navbar-brand" href="#">
+	  	<img src="img/suit.jpg">
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <i class="fa fa-bars"></i>
+	  </button>
 
-	<section id="about" name="about"></section>
-	<div class="about">
-		<div class="container">
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav ml-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">HOME</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">ABOUT ME</a>
+	      </li>
+	      <li class="nav-item">
+	      	<a class="nav-link" href="#">RESUME</a>
+	      </li>
+	      <li class="nav-item">
+	      	<a class="nav-link" href="#">SERVICES</a>
+	      </li>
+	      
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Dropdown
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="#">ABOUT ME</a>
+	          <a class="dropdown-item" href="#">RESUME</a>
+	          <div class="dropdown-divider"></div>
+	          <a class="dropdown-item" href="#">SERVICES</a>
+	        </div>
+	      </li>
+	     <!-- <li class="nav-item">
+	        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+	      </li>-->
+	    </ul>
+	    <!--<form class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	    </form>-->
+	  </div>
+	</nav>
+</div>
+	<!------------- USER INFO SECTION ------------->
+	<div class="about container" id="about">
+		<div class="row">
+			<div class="col-md-6 text center">
+				<img src="img/suit.jpg" class="profile-img">
+			</div>
+
+			<div class="col-md-6">
+				<h3>WHO AM I?</h3>
+				<p>
+					Hello, I'm a current sophomore studying Computer Science at the University of Michigan. I expect to graduate with a BSE from the College of Engineering in 2022. My main experience lies in C++, Javascript, and Service Now. I speak English, French, and Russian.
+				</p>	
+
+			<div class="skills-bar">
+				<p>C++</p>
+				<div class="progress">
+					<div class="progress-bar" style="width: 80%">80%</div>
+				</div>
+
+				<p>Java</p>
+				<div class="progress">
+					<div class="progress-bar" style="width: 60%">60%</div>
+				</div>
+
+				<p>Service Now</p>
+				<div class="progress">
+					<div class="progress-bar" style="width: 70%">70%</div>
+				</div>
+
+			</div>	
+		</div>
+	</div><br>
+
+	<!------------- RESUME SECTION ------------->
+	<div class="resume" id="resume">
+		<div class="containter">
 			<div class="row">
-				
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>ABOUT</h5>
-				</div>
-				<div class="col-lg-6">
-					<!-- EDIT: about -->
-					<p>Hello, I'm a current sophomore at the University of Michigan, studying Computer Science through the College of Engineering. I have experience with C++, JavaScript, and ServiceNow. I also speak English, French, and Russian.</p>
-				</div>
-				<div class="col-lg-3">
-					<!-- EDIT: download link -->
-					<p><a href="https://docs.google.com/document/d/1u8NMpX1azPf5_dD513l20B66hpTEYmHBlle9D_zGQyk/edit" target="_blank"><i class="icon-file"></i> <sm>Open Google Doc</sm></a></p>
-				</div>
-				
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/ #intro -->
+				<div class="col-md-6">
+					<h3>My Experiences</h3>
+					<ul class="timeline">
+						<li>
+						<h4>2016- Web Developer Intern</h4>
+						<p>
+							<h5><b>Company</b> - Michigan Chess Association</h5>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sapien magna, faucibus a consequat in, rhoncus sit amet diam.<br>
+						
 
+						</p>
+						</li>
 
-	<section id="resume" name="resume"></section>
-	<!-- EDUCATION SECTION -->
-	<div class="container desc">
-		<div class="row">
+						<li>
+						<h4>2017- Robotics AV Team</h4>
+						<p></p>
+						</li>
 
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>EDUCATION</h5>
+						<li>
+						<h4>2019- Technical Services Intern</h4>
+						<p></p>
+						</li>
+					</ul>
 				</div>
-				<!-- EDIT: education line 1 -->
-				<div class="col-lg-6">
-					<p><t>Bachelor of Science, Engineering</t><br/>
-						University of Michigan<br/>
-						Computer Science Major<br/>
-						3.52 GPA<br/>
-						Security Lead for Michigan Hackers
-
-						<!--<br/><i>Extra info here</i>-->
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>Expected SPRING 2022</sm><br/>
-					<imp><sm>IN PROGRESS</sm></imp>
-					</p>
-				</div>
-	
-				<!-- EDIT: education line 2 -->
-				<div class="col-lg-6 col-lg-offset-3">
-					<p><t>IB Diploma </t><br/>
-						 H. H. Dow High School<br/>
-						 3.9/4.0 GPA<br/>
-						 Summa Cum Laude
-						<!--<br/><i>Extra info here</i>-->
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>JUNE 2018</sm></p>
-				</div>
-	
-		</div><!--/.row -->
-		<br>
-		<hr>
-	</div><!--/.container -->
-	
-	<!-- WORK SECTION -->
-	<div class="container desc">
-		<div class="row">
-
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>WORK</h5>
-				</div>
-				<!-- EDIT: work line 1 -->
-				<div class="col-lg-6">
-					<p class="tight"><t>Technical Services Intern</t><br/>
-						Frankenmuth Insurance <br/>
-					</p>
-					<p><more>Job Description.</more></p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>MAY - AUG 2019 <br />
-					Frankenmuth, Michigan</sm></p>
-				</div>
-				
-				<!-- EDIT: work line 2-->
-				<div class="col-lg-6 col-lg-offset-3">
-					<p class="tight"><t>Web Developer Intern</t><br/>
-						Michigan Chess Association <br/>
-					</p>
-					<p><more>Job Description.</more></p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>SEPT 2017 - SEPT 2018 <br />
-					Michigan</sm></p>
-				</div>
-		</div><!--/.row -->
-		<br>
-		<hr>
-	</div><!--/.container -->
-
-
-	<!-- AWARDS SECTION -->
-	<div class="container desc">
-		<div class="row">
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>AWARDS</h5>
-				</div>
-
-				<!-- EDIT: awards line 1-->
-				<div class="col-lg-6">
-					<p><t>Engineering Dean's List</t><br/>
-						College of Engineering<br/>
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>MAY 2019</sm></p>
-				</div>
-	
-				<!-- EDIT: awards line 2-->
-				<!--<div class="col-lg-6 col-lg-offset-3">
-					<p class="tight"><t>Award 2</t><br/>
-						Awards Site
-					</p>
-					<p><more>This award has a description. </more></p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>2013</sm></p>
-				</div>-->
-		
-		</div><!--/.row -->
-		<br>
-	</div><!--/.container -->
-	
-
-	<section id="contact" name="contact"></section>
-	<!--FOOTER DESCRIPTION -->
-	<div id="footwrap" class="footer">
-		<div class="container">
-			<div class="row">
-			
-				<div class="col-lg-2 col-lg-offset-1">
-					<h5>CONTACT</h5>
-				</div>
-				<!-- EDIT: email -->
-				<div class="col-lg-6">
-					<p><t>Email</t><br/>
-						<a href="mailto:nkono@umich.edu" target="_blank" class="mail">nkono@umich.edu</a> <br/>
-					</p>
-					<!-- EDIT: address -->
-					<!--<p><t>Address</t><br/>
-						123 Some St. <br/>						DO I WANT TO INCLUDE ADDRESS?
-						City, State 01234 <br/>
-						United States of America<br/> -->
-					</p>
-					<!-- EDIT: phone number -->
-					<p><t>Phone</t><br/>
-						<a href="tel:9892254229" class="tel">(989) 225-4229</a> <br/>
-					</p>
-				</div>
-				<div class="col-lg-3">
-					<p><sm>SOCIAL LINKS</sm></p>
-					<p>
-						<!-- EDIT: Social Links. Replace # with your URL for each -->
-						<a href="#" target="_blank"><i class="icon-dribbble"></i></a>
-						<a href="#" target="_blank"><i class="icon-twitter"></i></a>
-						<a href="#" target="_blank"><i class="icon-facebook"></i></a>
-						<a href="https://www.linkedin.com/in/nicholas-konovalenko-2b3258171/" target="_blank"><i class="icon-linkedin"></i></a>
-						<!--<a href="#" target="_blank"><i class="icon-github"></i></a>-->
-					</p>
-				</div>
-			</div><!--/.row -->
-		</div><!--/.container -->
-	</div><!--/ #footer -->
-  </body>
+			</div>
+		</div>
+	</div>
+</section>
+</body>
 </html>
