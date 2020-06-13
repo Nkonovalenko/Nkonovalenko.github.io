@@ -1,0 +1,4 @@
+TODO List:
+	- Split up experience between internships, & clubs/leadership
+	- Create new scrolling index page
+	- Add a page showcasing projects
