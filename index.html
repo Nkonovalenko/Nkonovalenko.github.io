@@ -163,79 +163,17 @@
 
 <!-------------------- HEADER SECTION -------------------->
 	<section id="header">
-		<div class="container text-center">
-			<div class="user-box">
-
-				<!-------- EDIT THE LINK TO USER IMAGE HERE ----->
-				<img src="img/header.JPEG">
-				<h1>Nicholas Konovalenko</h1>
-				<!--<p>Developer</p>--> <!--- This line will be deleted oncce the flipping text works --->
-				<!--- 												This is a change that will add in flipping text descriptions-->
+		<canvas id="headerCanvas"></canvas>
+		<div class="container">
+			<div class="header-content">
 				<div class="text">
 					<p>I am <p>
-					<span class="word white"> Nerdy </span>
-					<span class="word white"> Adventurous </span>
-					<span class="word white"> Friendly </span>
-					<span class="word white"> Innovative </span>	
-					<span class="word white"> Curious </span>
-
-					<script>
-						var words = document.getElementsByClassName('word');
-						var wordArray = [];
-						var currentWord = 0;
-
-						words[currentWord].style.opacity = 1;
-						for (var i = 0; i < words.length; i++) {
-						  splitLetters(words[i]);
-						}
-
-						function changeWord() {
-						  var cw = wordArray[currentWord];
-						  var nw = currentWord == words.length-1 ? wordArray[0] : wordArray[currentWord+1];
-						  for (var i = 0; i < cw.length; i++) {
-						    animateLetterOut(cw, i);
-						  }
-						  
-						  for (var i = 0; i < nw.length; i++) {
-						    nw[i].className = 'letter behind';
-						    nw[0].parentElement.style.opacity = 1;
-						    animateLetterIn(nw, i);
-						  }
-						  
-						  currentWord = (currentWord == wordArray.length-1) ? 0 : currentWord+1;
-						}
-
-						function animateLetterOut(cw, i) {
-						  setTimeout(function() {
-								cw[i].className = 'letter out';
-						  }, i*80);
-						}
-
-						function animateLetterIn(nw, i) {
-						  setTimeout(function() {
-								nw[i].className = 'letter in';
-						  }, 340+(i*80));
-						}
-
-						function splitLetters(word) {
-						  var content = word.innerHTML;
-						  word.innerHTML = '';
-						  var letters = [];
-						  for (var i = 0; i < content.length; i++) {
-						    var letter = document.createElement('span');
-						    letter.className = 'letter';
-						    letter.innerHTML = content.charAt(i);
-						    word.appendChild(letter);
-						    letters.push(letter);
-						  }
-						  
-						  wordArray.push(letters);
-						}
-
-						changeWord();
-						setInterval(changeWord, 4000);
-					</script>
-					<!----->
+				</div>
+				<h1>Nicholas Konovalenko,</h1>
+				<div class="intro-text">
+					<p>a Machine Learning Engineer at Roblox focusing on the RecSys stack that powers the home page. 
+					   I graduated from the University of Michigan with a BSE in Computer Science and a MS in AI from Boston University.
+					   </p>
 				</div>
 			</div>
 		</div>	
@@ -562,6 +500,210 @@
 	document.querySelectorAll('.fade-in').forEach((element) => {
 		observer.observe(element);
 	});
+
+	// Canvas Animation
+	const canvas = document.getElementById('headerCanvas');
+	const ctx = canvas.getContext('2d');
+
+	// Set canvas size
+	function resizeCanvas() {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	}
+	resizeCanvas();
+	window.addEventListener('resize', resizeCanvas);
+
+	// Graph settings
+	const gridSize = 40;
+	const points = [];
+	let mouseX = 0;
+	let mouseY = 0;
+	
+	// Add trend line points
+	const trendLines = [];
+	const numTrendLines = 5;
+	
+	// Initialize trend lines
+	function initializeTrendLines() {
+		for (let i = 0; i < numTrendLines; i++) {
+			const startX = Math.random() * canvas.width;
+			const startY = Math.random() * canvas.height;
+			const points = [];
+			const numPoints = 10 + Math.floor(Math.random() * 10);
+			
+			for (let j = 0; j < numPoints; j++) {
+				points.push({
+					x: startX + j * 50,
+					y: startY + (Math.random() - 0.5) * 100,
+					velocity: (Math.random() - 0.5) * 0.5
+				});
+			}
+			
+			trendLines.push({
+				points: points,
+				color: `rgba(255, 255, 255, ${0.1 + Math.random() * 0.2})`
+			});
+		}
+	}
+	
+	initializeTrendLines();
+
+	// Initialize points in a more organic pattern
+	function initializePoints() {
+		points.length = 0;
+		const numPoints = Math.floor((canvas.width * canvas.height) / (gridSize * gridSize * 2));
+		
+		for (let i = 0; i < numPoints; i++) {
+			const x = Math.random() * canvas.width;
+			const y = Math.random() * canvas.height;
+			points.push({
+				x: x,
+				y: y,
+				baseX: x,
+				baseY: y,
+				targetX: x,
+				targetY: y,
+				velocityX: (Math.random() - 0.5) * 0.5,
+				velocityY: (Math.random() - 0.5) * 0.5
+			});
+		}
+	}
+	initializePoints();
+
+	// Mouse move handler
+	canvas.addEventListener('mousemove', (e) => {
+		mouseX = e.clientX;
+		mouseY = e.clientY;
+	});
+
+	// Animation loop
+	function animate() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		
+		// Draw gradient background
+		const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+		gradient.addColorStop(0, 'rgba(30, 39, 46, 0.95)');
+		gradient.addColorStop(1, 'rgba(9, 132, 227, 0.95)');
+		ctx.fillStyle = gradient;
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		// Draw subtle grid lines
+		ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+		ctx.lineWidth = 1;
+		
+		// Vertical grid lines
+		for (let x = 0; x < canvas.width; x += 100) {
+			ctx.beginPath();
+			ctx.moveTo(x, 0);
+			ctx.lineTo(x, canvas.height);
+			ctx.stroke();
+		}
+		
+		// Horizontal grid lines
+		for (let y = 0; y < canvas.height; y += 100) {
+			ctx.beginPath();
+			ctx.moveTo(0, y);
+			ctx.lineTo(canvas.width, y);
+			ctx.stroke();
+		}
+
+		// Update and draw trend lines
+		trendLines.forEach(line => {
+			line.points.forEach((point, index) => {
+				if (index < line.points.length - 1) {
+					ctx.beginPath();
+					ctx.strokeStyle = line.color;
+					ctx.lineWidth = 2;
+					ctx.moveTo(point.x, point.y);
+					ctx.lineTo(line.points[index + 1].x, line.points[index + 1].y);
+					ctx.stroke();
+					
+					// Add price indicators
+					if (index % 3 === 0) {
+						ctx.beginPath();
+						ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
+						ctx.fillStyle = line.color;
+						ctx.fill();
+					}
+				}
+				
+				// Update point position
+				point.y += point.velocity;
+				if (point.y < 0 || point.y > canvas.height) {
+					point.velocity *= -1;
+				}
+			});
+		});
+
+		// Update points with smoother movement
+		points.forEach(point => {
+			const dx = point.x - mouseX;
+			const dy = point.y - mouseY;
+			const distance = Math.sqrt(dx * dx + dy * dy);
+			
+			if (distance < 150) {
+				const angle = Math.atan2(dy, dx);
+				const force = (150 - distance) / 150;
+				point.targetX = point.baseX + Math.cos(angle) * force * 30;
+				point.targetY = point.baseY + Math.sin(angle) * force * 30;
+			} else {
+				point.targetX = point.baseX;
+				point.targetY = point.baseY;
+			}
+			
+			point.x += (point.targetX - point.x) * 0.15;
+			point.y += (point.targetY - point.y) * 0.15;
+
+			point.x += point.velocityX;
+			point.y += point.velocityY;
+
+			if (point.x < 0 || point.x > canvas.width) point.velocityX *= -1;
+			if (point.y < 0 || point.y > canvas.height) point.velocityY *= -1;
+		});
+
+		// Draw connections with increased opacity
+		ctx.beginPath();
+		ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+		ctx.lineWidth = 1.5;
+
+		for (let i = 0; i < points.length; i++) {
+			const point = points[i];
+			
+			for (let j = i + 1; j < points.length; j++) {
+				const otherPoint = points[j];
+				const dx = point.x - otherPoint.x;
+				const dy = point.y - otherPoint.y;
+				const distance = Math.sqrt(dx * dx + dy * dy);
+				
+				if (distance < gridSize * 1.5) {
+					const opacity = 1 - (distance / (gridSize * 1.5));
+					ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.15})`;
+					ctx.beginPath();
+					ctx.moveTo(point.x, point.y);
+					ctx.lineTo(otherPoint.x, otherPoint.y);
+					ctx.stroke();
+				}
+			}
+		}
+
+		// Draw points with increased visibility
+		points.forEach(point => {
+			ctx.beginPath();
+			ctx.arc(point.x, point.y, 1, 0, Math.PI * 2);
+			ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+			ctx.fill();
+			
+			// Add glow effect
+			ctx.beginPath();
+			ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
+			ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+			ctx.fill();
+		});
+		
+		requestAnimationFrame(animate);
+	}
+
+	animate();
 </script>
 </body>
 </html>
