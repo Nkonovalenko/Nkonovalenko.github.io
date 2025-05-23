@@ -514,44 +514,15 @@
 	window.addEventListener('resize', resizeCanvas);
 
 	// Graph settings
-	const gridSize = 40;
+	const gridSize = 25; // Smaller grid size for denser connections
 	const points = [];
 	let mouseX = 0;
 	let mouseY = 0;
-	
-	// Add trend line points
-	const trendLines = [];
-	const numTrendLines = 5;
-	
-	// Initialize trend lines
-	function initializeTrendLines() {
-		for (let i = 0; i < numTrendLines; i++) {
-			const startX = Math.random() * canvas.width;
-			const startY = Math.random() * canvas.height;
-			const points = [];
-			const numPoints = 10 + Math.floor(Math.random() * 10);
-			
-			for (let j = 0; j < numPoints; j++) {
-				points.push({
-					x: startX + j * 50,
-					y: startY + (Math.random() - 0.5) * 100,
-					velocity: (Math.random() - 0.5) * 0.5
-				});
-			}
-			
-			trendLines.push({
-				points: points,
-				color: `rgba(255, 255, 255, ${0.1 + Math.random() * 0.2})`
-			});
-		}
-	}
-	
-	initializeTrendLines();
 
 	// Initialize points in a more organic pattern
 	function initializePoints() {
 		points.length = 0;
-		const numPoints = Math.floor((canvas.width * canvas.height) / (gridSize * gridSize * 2));
+		const numPoints = Math.floor((canvas.width * canvas.height) / (gridSize * gridSize * 1.2)); // More points
 		
 		for (let i = 0; i < numPoints; i++) {
 			const x = Math.random() * canvas.width;
@@ -564,7 +535,9 @@
 				targetX: x,
 				targetY: y,
 				velocityX: (Math.random() - 0.5) * 0.5,
-				velocityY: (Math.random() - 0.5) * 0.5
+				velocityY: (Math.random() - 0.5) * 0.5,
+				size: 0.8 + Math.random() * 0.8,
+				brightness: 0.7 + Math.random() * 0.3
 			});
 		}
 	}
@@ -587,54 +560,6 @@
 		ctx.fillStyle = gradient;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-		// Draw subtle grid lines
-		ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-		ctx.lineWidth = 1;
-		
-		// Vertical grid lines
-		for (let x = 0; x < canvas.width; x += 100) {
-			ctx.beginPath();
-			ctx.moveTo(x, 0);
-			ctx.lineTo(x, canvas.height);
-			ctx.stroke();
-		}
-		
-		// Horizontal grid lines
-		for (let y = 0; y < canvas.height; y += 100) {
-			ctx.beginPath();
-			ctx.moveTo(0, y);
-			ctx.lineTo(canvas.width, y);
-			ctx.stroke();
-		}
-
-		// Update and draw trend lines
-		trendLines.forEach(line => {
-			line.points.forEach((point, index) => {
-				if (index < line.points.length - 1) {
-					ctx.beginPath();
-					ctx.strokeStyle = line.color;
-					ctx.lineWidth = 2;
-					ctx.moveTo(point.x, point.y);
-					ctx.lineTo(line.points[index + 1].x, line.points[index + 1].y);
-					ctx.stroke();
-					
-					// Add price indicators
-					if (index % 3 === 0) {
-						ctx.beginPath();
-						ctx.arc(point.x, point.y, 3, 0, Math.PI * 2);
-						ctx.fillStyle = line.color;
-						ctx.fill();
-					}
-				}
-				
-				// Update point position
-				point.y += point.velocity;
-				if (point.y < 0 || point.y > canvas.height) {
-					point.velocity *= -1;
-				}
-			});
-		});
-
 		// Update points with smoother movement
 		points.forEach(point => {
 			const dx = point.x - mouseX;
@@ -651,19 +576,34 @@
 				point.targetY = point.baseY;
 			}
 			
-			point.x += (point.targetX - point.x) * 0.15;
-			point.y += (point.targetY - point.y) * 0.15;
+			// Add subtle random movement
+			point.baseX += (Math.random() - 0.5) * 0.4;
+			point.baseY += (Math.random() - 0.5) * 0.4;
+			
+			// Keep base position within bounds
+			point.baseX = Math.max(0, Math.min(point.baseX, canvas.width));
+			point.baseY = Math.max(0, Math.min(point.baseY, canvas.height));
+			
+			point.x += (point.targetX - point.x) * 0.2;
+			point.y += (point.targetY - point.y) * 0.2;
 
 			point.x += point.velocityX;
 			point.y += point.velocityY;
 
-			if (point.x < 0 || point.x > canvas.width) point.velocityX *= -1;
-			if (point.y < 0 || point.y > canvas.height) point.velocityY *= -1;
+			// Bounce off edges with energy loss
+			if (point.x < 0 || point.x > canvas.width) {
+				point.velocityX *= -0.95;
+				point.x = Math.max(0, Math.min(point.x, canvas.width));
+			}
+			if (point.y < 0 || point.y > canvas.height) {
+				point.velocityY *= -0.95;
+				point.y = Math.max(0, Math.min(point.y, canvas.height));
+			}
 		});
 
-		// Draw connections with increased opacity
+		// Draw connections with increased opacity and distance
 		ctx.beginPath();
-		ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+		ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'; // Increased base opacity
 		ctx.lineWidth = 1.5;
 
 		for (let i = 0; i < points.length; i++) {
@@ -675,9 +615,9 @@
 				const dy = point.y - otherPoint.y;
 				const distance = Math.sqrt(dx * dx + dy * dy);
 				
-				if (distance < gridSize * 1.5) {
-					const opacity = 1 - (distance / (gridSize * 1.5));
-					ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.15})`;
+				if (distance < gridSize * 2) { // Increased connection distance
+					const opacity = 1 - (distance / (gridSize * 2));
+					ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`; // Increased max opacity
 					ctx.beginPath();
 					ctx.moveTo(point.x, point.y);
 					ctx.lineTo(otherPoint.x, otherPoint.y);
@@ -686,17 +626,24 @@
 			}
 		}
 
-		// Draw points with increased visibility
+		// Draw points with enhanced glow
 		points.forEach(point => {
+			// Outer glow
 			ctx.beginPath();
-			ctx.arc(point.x, point.y, 1, 0, Math.PI * 2);
-			ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+			ctx.arc(point.x, point.y, point.size * 3, 0, Math.PI * 2);
+			ctx.fillStyle = `rgba(255, 255, 255, ${point.brightness * 0.1})`;
 			ctx.fill();
 			
-			// Add glow effect
+			// Middle glow
 			ctx.beginPath();
-			ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
-			ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+			ctx.arc(point.x, point.y, point.size * 1.5, 0, Math.PI * 2);
+			ctx.fillStyle = `rgba(255, 255, 255, ${point.brightness * 0.3})`;
+			ctx.fill();
+			
+			// Core point
+			ctx.beginPath();
+			ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
+			ctx.fillStyle = `rgba(255, 255, 255, ${point.brightness})`;
 			ctx.fill();
 		});
 		
