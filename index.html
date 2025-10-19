@@ -2,663 +2,427 @@
 <html data-bs-theme="dark">
 <head>
 	<title>Nicholas Konovalenko</title>
-	<!-- Link CSS Stylsheet -->
-	<link rel="stylesheet" href="style.css">
-
-	<!-- Link Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-	<!-- Link Font Awesome 6 -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-	<!-- Meta-->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	
 	<meta charset="UTF-8">
-	<meta name="description" content="The portfolio site for Nicholas Konovalenko.">
-	<meta name="keywords" content="Nicholas Konovalenko, Nicholas, Konovalenko, Nick, Kono, Nickono, NickKono, NKonovalenko">
+	<meta name="description" content="Nicholas Konovalenko - Machine Learning Engineer at Roblox">
+	<meta name="keywords" content="Machine Learning Engineer, ML, AI, RecSys, PyTorch, Python, Nicholas Konovalenko, Roblox, Nick Kono, nkono, nkonovalenko">
 	<meta name="author" content="Nicholas Konovalenko">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Custom CSS -->
-	<style>
-		:root {
-			--primary-color: #2d3436;
-			--secondary-color: #0984e3;
-			--accent-color: #00b894;
-			--text-color: #2d3436;
-			--light-bg: #f5f6fa;
-			--card-bg: #ffffff;
-			--header-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-		}
-
-		[data-bs-theme="dark"] {
-			--primary-color: #0984e3;
-			--secondary-color: #00b894;
-			--text-color: #f5f6fa;
-			--light-bg: #2d3436;
-			--card-bg: #1e272e;
-			--header-gradient: linear-gradient(135deg, #1e272e, #0984e3);
-		}
-
-		body {
-			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-			color: var(--text-color);
-			line-height: 1.6;
-			background-color: var(--light-bg);
-			transition: background-color 0.3s ease, color 0.3s ease;
-		}
-
-		.navbar {
-			background-color: var(--card-bg);
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-			transition: background-color 0.3s ease;
-		}
-
-		.navbar-brand img {
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			object-fit: cover;
-		}
-
-		#header {
-			background: var(--header-gradient);
-			color: white;
-			padding: 100px 0;
-			transition: background 0.3s ease;
-		}
-
-		.user-box img {
-			width: 200px;
-			height: 200px;
-			border-radius: 50%;
-			object-fit: cover;
-			border: 4px solid white;
-			box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-		}
-
-		.services-box {
-			background: var(--card-bg);
-			padding: 30px;
-			border-radius: 10px;
-			box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-			transition: transform 0.3s ease, background-color 0.3s ease;
-		}
-
-		.services-box:hover {
-			transform: translateY(-5px);
-		}
-
-		.timeline {
-			position: relative;
-			padding: 20px 0;
-		}
-
-		.timeline li {
-			background: var(--card-bg);
-			padding: 20px;
-			border-radius: 8px;
-			margin-bottom: 20px;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-			transition: background-color 0.3s ease;
-		}
-
-		.progress {
-			height: 10px;
-			border-radius: 5px;
-			background-color: var(--light-bg);
-		}
-
-		.progress-bar {
-			background-color: var(--secondary-color);
-		}
-
-		/* Scroll Animation Classes */
-		.fade-in {
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.6s ease, transform 0.6s ease;
-		}
-
-		.fade-in.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		/* Dark Mode Toggle Button */
-		.theme-toggle {
-			position: fixed;
-			bottom: 20px;
-			right: 20px;
-			z-index: 1000;
-			background: var(--card-bg);
-			border: none;
-			border-radius: 50%;
-			width: 50px;
-			height: 50px;
-			box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-		}
-
-		.theme-toggle i {
-			font-size: 1.5rem;
-			color: var(--text-color);
-		}
-
-		/* Contact Section */
-		.contact {
-			background-color: var(--light-bg);
-			transition: background-color 0.3s ease;
-		}
-
-		/* Footer */
-		.footer {
-			background-color: var(--primary-color);
-			color: white;
-			transition: background-color 0.3s ease;
-		}
-	</style>
 </head>
 <body>
+	<!-- Background Elements -->
+	<div class="bg-pattern"></div>
+	<div class="grid-overlay"></div>
 
-<!-------------------- HEADER SECTION -------------------->
-	<section id="header">
-		<canvas id="headerCanvas"></canvas>
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg fixed-top">
 		<div class="container">
-			<div class="header-content">
-				<div class="text">
-					<p>I am <p>
-				</div>
-				<h1>Nicholas Konovalenko,</h1>
-				<div class="intro-text">
-					<p>a Machine Learning Engineer at Roblox focusing on the RecSys stack that powers the home page. 
-					   I graduated from the University of Michigan with a BSE in Computer Science and a MS in AI from Boston University.
-					   </p>
-				</div>
-			</div>
-		</div>	
-
-		<div class="scroll-btn">
-			<div class="scroll-bar"><a href=""><span></span></a></div>
-		</div>
-	</section>
-
-
-<section id="user-info">
-
-<div class="nav-bar">
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="#">
-				<img src="img/user.jpg" alt="Nicholas Konovalenko">
-			</a>
-			<div id="vert-bar"></div>	  
-
-			<div id="social-media">
-				<a href="https://github.com/NKonovalenko" class="me-3">
-					<i class="fab fa-github fa-lg"></i>
-				</a>
-
-				<a href="https://linkedin.com/in/NKonovalenko" class="me-3">
-					<i class="fab fa-linkedin fa-lg"></i>
-				</a>
-		  
-				<a href="mailto:nkono@umich.edu" class="me-3">
-					<i class="fas fa-envelope fa-lg"></i>
-				</a>
-			</div>
-
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+			<a class="navbar-brand" href="#">NK</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#header">HOME</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#about">ABOUT ME</a>
-					</li>
-					<!-- <li class="nav-item">
-						<a class="nav-link" href="#resume">RESUME</a>
-					</li> -->
-					<li class="nav-item">
-						<a class="nav-link" href="#services">LEADERSHIP</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+					<li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+					<li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+					<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-</div>
-	<!-- ----------- USER INFO SECTION -----------
-	<div class="about container fade-in" id="about">
-		<div class="row align-items-center">
-			<div class="col-md-6 text-center">
-				<img src="img/user.jpg" class="profile-img img-fluid rounded-circle shadow">
-			</div>
-			<div class="col-md-6">
-				<h3 class="mb-4">WHO AM I?</h3>
-				<p class="lead">
-					Hello, I'm a graduating Master's in Artificial Intelligence student at Boston University. I completed my Bachelor's in CS at the University of Michigan, taking coursework in CV, NLP, AI/ML, and Deep Learning. I'm driven by my curiousity, and have even learned how to decode QR codes by hand and how jet turbines work. My main interests lie in Deep Learning, especially with multimodal decision making based on both textual and visual inputs.
-				</p>	
-				<div class="skills-bar mt-4">
-					<p class="mb-2">Python</p>
-					<div class="progress mb-3">
-						<div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-					</div>
 
-					<p class="mb-2">Java</p>
-					<div class="progress mb-3">
-						<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-					</div>
-
-					<p class="mb-2">Fast Learner</p>
-					<div class="progress mb-3">
-						<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
-					</div>
-				</div>	
-			</div>
-		</div>
-	</div><br> -->
-
-	<!------------- RESUME SECTION ------------->
-	<div class="resume fade-in" id="resume">
-		<div class="containter">
-			<div class="row">
-				<div class="col-md-6">
-					<h3 class="text-center">Experiences</h3>
-					<ul class="timeline">
-						<li>
-							<h4><span>2023- Roblox Machine Learning Engineer</span></h4>
-							<p>
-								I've had multiple production launches, resulting in stat sig lift to platform topline metrics (DAU, Bookins, Playtime, etc).
-								<br>
-								<b>Company: </b> Roblox<br>
-								<b>Duration: </b> August 2023 - Present<br>
-								<b>Location: </b> San Mateo, California<br>
-								<b>Languages: </b> PyTorch, PySpark, Scala<br>  
-							</p>
-						</li>
-
-						<li>
-							<h4><span>2022- Microsoft SWE Intern</span></h4>
-							<p>
-								With this internship I'm gaining full stack experience. I have to handle user data securly between my front and back ends, adding functionality to internal tools to automate tasks for my team. The tech stack I'm using involves React-Redux for the frontend, and C# with Kusto for my backend. <br>
-								<b>Company: </b> Microsoft<br>
-								<b>Duration: </b> May - August 2022<br>
-								<b>Location: </b> Bellevue, Washington<br>
-								<b>Languages: </b> Typescript, React, C#<br>  
-							</p>
-						</li>
-
-						<li>
-							<h4><span>2021- Amazon SDE Intern</span></h4>
-							<p>
-								I worked with the Computer Vision, QA & Camera teams to develop an automated testing platform. My project was responsible for processing and moving data around at a speed of 0.5 GB per second on an ARM Core. My multithreaded approach kept impact to the CPU and RAM low, which was important as a constraint was to not use any cloud services. <br>
-								<b>Company: </b> Amazon<br>
-								<b>Duration: </b> May - August 2021<br>
-								<b>Location: </b> Sunnyvale, California<br>
-								<b>Languages: </b> Java<br>  
-							</p>
-						</li>
-
-						<li>
-						<h4><span>2020- Backend Software Engineering Intern</span></h4>
-						<p>
-							I designed and built a fullstack web application in a team of 3 interns. I focussed on our Orchestrator's REST API, which was written in C# and which communicates with our UI, DynamoDB and CircleCI. This allows for scalability of document ingestion which will save 3100+ hours of engineer work. Our team's intern project was deployed to AWS.<br>
-							<b>Company: </b> Quicken Loans<br>
-							<b>Duration: </b> June - August 2020<br>
-							<b>Location:</b> Detroit, Michigan<br>
-							<b>Languages: </b> C# ASP.NET, Angular
-						</p>
-						</li>
-
-						<li>
-						<h4><span>2019 - </span> Technical Services Intern</h4>
-						<p>
-							I reduced SLA notification code duplication by 80% which increased accuracy to 100% with Java Scipt. My Power Shell script imported agents and agencies from AID into ServiceNow and created relationships, allowing those employees to be linked to support tickets.<br>
-							<b>Company: </b>  Frankenmuth Insurance<br>
-							<b>Duration: </b>  May - August 2019<br>
-							<b>Location:</b>  Frankenmuth, Michigan<br>
-							<b>Languages: </b> Power Shell, Java Script 
-						</p>
-						</li>
-
-						</li>
-
-					</ul>
-				</div>
-
-				<div class="col-md-6">
-					<h3 class="text-center">Education & Projects</h3>
-					<ul class="timeline">
-						<li>
-						<h4><span>2023 - </span> Master of Science, Artificial Intelligence</h4>
-						<p>
-							I graduate with my MS in Artificial Intelligence, taking advanced coursework in Machine Learning, Image Processing, Data Mining, and Deep Learning.
-							<b>School:</b>  Boston University<br>
-							<b>Duration: </b>  2022 - 2023<br>
-							<b>GPA:</b>  3.7<br><br>
-						</p>
-						</li>
-
-						<li>
-						<h4><span>2022 - </span> Bachelor of Science Engineering, Computer Science</h4>
-						<p>
-							I have graduated with a BSE for Computer Science in May 2022. I participated in several extra curriculars including: Michigan Hackers, Chess Team, Rec Tennis, and I was a Residential Advisor. I've held several leadership positions, such as being the Security Lead as well as Vice President of External Affairs for Michigan Hackers, Chess Team Vice President, and Chess Team President.<br>
-							<b>School:</b>  University of Michigan<br>
-							<b>Duration: </b>  2018 - 2022<br>
-							<b>GPA:</b>  3.5<br><br>
-						</p>
-						</li>
-
-						<li>
-						<h4><span>2021 - </span> Deep Learning Go Bot</h4>
-						<p>
-							I have recently become very interested in Artificial Intelligence and Machine Learning. As a side project, I am developing a bot to play Go. This bot will be written in Python, and deployed to AWS to play against other Go bots online. I have implemented several algorithms, including Naive, Minimax, Monte Carlo Tree Search, and Convolutional Neural Networks. <br>
-							<b>Technologies:</b> Python, AWS <br>
-							<b>URL:</b> 
-								<a href="https://github.com/Nkonovalenko/GoAI">GoAI</a>
-							<br><br><br>
-						</p>
-						</li>	
-						
-						<li>
-						<h4><span>2019 - </span> Google FooBar</h4>
-						<p>
-							During the summer I received an invitation to complete the Google FooBar Competition. Over 5 levels, there are a total of 9 challenges, covering topics such as Graph Theory, Combinatorics, and Dynamic Prorgamming. I completed all 9 challenges, which required being able to handle up to 10<sup>100</sup> points of input in O(n) space and a worst case O(n*log(n)) time complexity.<br>
-							<b>Duration: </b>June - September 2019<br>
-							<b>Challenges Completed: </b> 9/9<br>
-							<b>Languages: </b> Python, Java<br>
-						</p>
-						</li>
-
-						
-					</ul>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-<!-------------------- Projects SECTION -------------------->
-<div class="projects" id="projects">
-
-	<div class="container">
-
-	</div>
-
-</div>
-
-<!-------------------- Services SECTION -------------------->
-<div class="services fade-in" id="services">
-	<div class="container py-5">
-		<h1 class="text-center mb-5">Leadership</h1>
-
-		<div class="row g-4">
-			<div class="col-md-4">
-				<div class="services-box">
-					<i class="fas fa-laptop-code fa-2x mb-3 text-primary"></i>
-					<h4 class="mb-3">Michigan Hackers</h4>
-					<p>I spent 4 years with Michigan Hackers, as a Security Engineer, Security Lead, Vice President of External Affairs, and Senior Advisor. As VP, I raised $2000 and hosted events with Google, Facebook, Capital One and Grainger.</p>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="services-box">
-					<i class="fas fa-chess fa-2x mb-3 text-primary"></i>
-					<h4 class="mb-3">Chess Club</h4>
-					<p>I have spent the past 2 years as a Chess Club Officer in charge of New Membership and Logistics. Pre-COVID I was on the team that won Division II at the PanAmerican Chess Championships.</p>
-				</div>
-			</div>
-
-			<div class="col-md-4">
-				<div class="services-box">
-					<i class="fas fa-users fa-2x mb-3 text-primary"></i>
-					<h4 class="mb-3">Residential Advisor</h4>
-					<p>I spent 2 years as a Residential Advisor for Michigan Housing. I had a hall of 60-freshman that I advised and hosted events for. My most attended events included game nights, and an Internship workshop.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<!------------------- CONTACT ------------------->
-<div class="contact fade-in" id="contact">
-	<div class="container text-center">
-		<h1 class="mb-4">Contact Me</h1>
-		<p class="lead mb-5">
-			Feel free to contact me to learn more about my projects!
-		</p>
-
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<div class="d-flex justify-content-center gap-4 mb-4">
-					<a href="mailto:nkono@umich.edu" class="text-decoration-none">
-						<i class="fas fa-envelope fa-2x text-primary"></i>
-						<p class="mt-2">nkono@umich.edu</p>
-					</a>
-					<a href="https://www.nickono.com" class="text-decoration-none">
-						<i class="fas fa-globe fa-2x text-primary"></i>
-						<p class="mt-2">www.nickono.com</p>
-					</a>
-				</div>
-
-				<!-- <button type="button" class="btn btn-primary btn-lg" onclick="window.open('Nicholas_Konovalenko.pdf')">
-					<i class="fas fa-download me-2"></i>Download Resume
-				</button> -->
-			</div>
-		</div>
-	</div>
-</div>
-
-<!------------------- FOOTER ------------------->
-
-<!-- Dark Mode Toggle Button -->
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-	<i class="fas fa-moon"></i>
-</button>
-
-<!-- Bootstrap JS Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JS -->
-<script>
-	// Dark Mode Toggle
-	const themeToggle = document.getElementById('themeToggle');
-	const html = document.documentElement;
-	const icon = themeToggle.querySelector('i');
-
-	// Set dark mode as default
-	html.setAttribute('data-bs-theme', 'dark');
-	localStorage.setItem('theme', 'dark');
-	updateIcon('dark');
-
-	themeToggle.addEventListener('click', () => {
-		const currentTheme = html.getAttribute('data-bs-theme');
-		const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-		
-		html.setAttribute('data-bs-theme', newTheme);
-		localStorage.setItem('theme', newTheme);
-		updateIcon(newTheme);
-	});
-
-	function updateIcon(theme) {
-		icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-	}
-
-	// Scroll Animation
-	const observerOptions = {
-		root: null,
-		rootMargin: '0px',
-		threshold: 0.1
-	};
-
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				entry.target.classList.add('visible');
-			}
-		});
-	}, observerOptions);
-
-	document.querySelectorAll('.fade-in').forEach((element) => {
-		observer.observe(element);
-	});
-
-	// Canvas Animation
-	const canvas = document.getElementById('headerCanvas');
-	const ctx = canvas.getContext('2d');
-
-	// Set canvas size
-	function resizeCanvas() {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-	}
-	resizeCanvas();
-	window.addEventListener('resize', resizeCanvas);
-
-	// Graph settings
-	const gridSize = 25; // Smaller grid size for denser connections
-	const points = [];
-	let mouseX = 0;
-	let mouseY = 0;
-
-	// Initialize points in a more organic pattern
-	function initializePoints() {
-		points.length = 0;
-		const numPoints = Math.floor((canvas.width * canvas.height) / (gridSize * gridSize * 1.2)); // More points
-		
-		for (let i = 0; i < numPoints; i++) {
-			const x = Math.random() * canvas.width;
-			const y = Math.random() * canvas.height;
-			points.push({
-				x: x,
-				y: y,
-				baseX: x,
-				baseY: y,
-				targetX: x,
-				targetY: y,
-				velocityX: (Math.random() - 0.5) * 0.5,
-				velocityY: (Math.random() - 0.5) * 0.5,
-				size: 0.8 + Math.random() * 0.8,
-				brightness: 0.7 + Math.random() * 0.3
-			});
-		}
-	}
-	initializePoints();
-
-	// Mouse move handler
-	canvas.addEventListener('mousemove', (e) => {
-		mouseX = e.clientX;
-		mouseY = e.clientY;
-	});
-
-	// Animation loop
-	function animate() {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		
-		// Draw gradient background
-		const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-		gradient.addColorStop(0, 'rgba(30, 39, 46, 0.95)');
-		gradient.addColorStop(1, 'rgba(9, 132, 227, 0.95)');
-		ctx.fillStyle = gradient;
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-		// Update points with smoother movement
-		points.forEach(point => {
-			const dx = point.x - mouseX;
-			const dy = point.y - mouseY;
-			const distance = Math.sqrt(dx * dx + dy * dy);
-			
-			if (distance < 150) {
-				const angle = Math.atan2(dy, dx);
-				const force = (150 - distance) / 150;
-				point.targetX = point.baseX + Math.cos(angle) * force * 30;
-				point.targetY = point.baseY + Math.sin(angle) * force * 30;
-			} else {
-				point.targetX = point.baseX;
-				point.targetY = point.baseY;
-			}
-			
-			// Add subtle random movement
-			point.baseX += (Math.random() - 0.5) * 0.4;
-			point.baseY += (Math.random() - 0.5) * 0.4;
-			
-			// Keep base position within bounds
-			point.baseX = Math.max(0, Math.min(point.baseX, canvas.width));
-			point.baseY = Math.max(0, Math.min(point.baseY, canvas.height));
-			
-			point.x += (point.targetX - point.x) * 0.2;
-			point.y += (point.targetY - point.y) * 0.2;
-
-			point.x += point.velocityX;
-			point.y += point.velocityY;
-
-			// Bounce off edges with energy loss
-			if (point.x < 0 || point.x > canvas.width) {
-				point.velocityX *= -0.95;
-				point.x = Math.max(0, Math.min(point.x, canvas.width));
-			}
-			if (point.y < 0 || point.y > canvas.height) {
-				point.velocityY *= -0.95;
-				point.y = Math.max(0, Math.min(point.y, canvas.height));
-			}
-		});
-
-		// Draw connections with increased opacity and distance
-		ctx.beginPath();
-		ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)'; // Increased base opacity
-		ctx.lineWidth = 1.5;
-
-		for (let i = 0; i < points.length; i++) {
-			const point = points[i];
-			
-			for (let j = i + 1; j < points.length; j++) {
-				const otherPoint = points[j];
-				const dx = point.x - otherPoint.x;
-				const dy = point.y - otherPoint.y;
-				const distance = Math.sqrt(dx * dx + dy * dy);
+	<!-- Hero Section -->
+	<section id="home" class="hero-section">
+		<div class="container">
+			<div class="hero-content">
+				<h1 class="hero-title fade-in">Nicholas Konovalenko</h1>
+				<p class="hero-subtitle fade-in">Machine Learning Engineer</p>
+				<p class="hero-description fade-in">
+					Building next-generation recommendation systems at Roblox that impact millions of users daily. 
+					Specialized in deep learning, large-scale ML infrastructure, and driving measurable business outcomes.
+				</p>
 				
-				if (distance < gridSize * 2) { // Increased connection distance
-					const opacity = 1 - (distance / (gridSize * 2));
-					ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`; // Increased max opacity
-					ctx.beginPath();
-					ctx.moveTo(point.x, point.y);
-					ctx.lineTo(otherPoint.x, otherPoint.y);
-					ctx.stroke();
-				}
-			}
-		}
+				<!-- Impact Stats -->
+				<div class="impact-stats fade-in">
+					<div class="stat-card">
+						<div class="stat-number">100M+</div>
+						<div class="stat-label">Users Impacted</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">0.X%</div>
+						<div class="stat-label">DAU Improvement</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">X%</div>
+						<div class="stat-label">Bookings Improvement</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-number">20+</div>
+						<div class="stat-label">Features Engineered</div>
+					</div>
+				</div>
 
-		// Draw points with enhanced glow
-		points.forEach(point => {
-			// Outer glow
-			ctx.beginPath();
-			ctx.arc(point.x, point.y, point.size * 3, 0, Math.PI * 2);
-			ctx.fillStyle = `rgba(255, 255, 255, ${point.brightness * 0.1})`;
-			ctx.fill();
+				<div class="social-links fade-in">
+					<a href="https://github.com/NKonovalenko" class="social-link">
+						<i class="fab fa-github"></i>
+					</a>
+					<a href="https://linkedin.com/in/NKonovalenko" class="social-link">
+						<i class="fab fa-linkedin"></i>
+					</a>
+					<a href="mailto:nkono@umich.edu" class="social-link">
+						<i class="fas fa-envelope"></i>
+					</a>
+				</div>
+				
+				<div class="fade-in">
+					<a href="#projects" class="btn btn-primary me-3">View My Work</a>
+					<a href="Nicholas_Konovalenko.pdf" target="_blank" class="btn btn-outline-primary">Download Resume</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section id="about" class="section">
+		<div class="container">
+			<h2 class="section-title fade-in">Technical Expertise</h2>
+			<div class="row align-items-center">
+				<div class="col-lg-6 fade-in">
+					<h3 class="mb-4">Machine Learning at Scale</h3>
+					<p class="lead mb-4">
+						Architected and launched deep learning recommendation models across critical Roblox discovery surfaces.
+						Delivered multiple production releases that moved the needle on key engagement and revenue metrics.
+						<!--
+						Architected and deployed deep learning models across critical Roblox products such as the Home Page, Search, and Discovery.
+
+						Leading ML initiatives for Roblox's recommendation system serving 50M+ daily active users. 
+						Architecting and deploying deep learning models that directly impact platform revenue and engagement.-->
+					</p>
+					<p class="mb-4">
+						MSc Artificial Intelligence (Boston University) • BSE Computer Science (University of Michigan)
+					</p>
+					<div class="mb-4">
+						<span class="achievement-badge">
+							<i class="fas fa-users"></i>
+							100M+ Users Impacted
+						</span>
+
+						<span class="achievement-badge">
+							<i class="fas fa-chart-line"></i>
+							Stat-Sig Metric Improvements
+						</span>
+						<span class="achievement-badge">
+							<i class="fas fa-trophy"></i>
+							Multiple Production Launches
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-6 fade-in">
+					<div class="tech-showcase">
+						<div class="tech-item">
+							<div class="tech-icon"><i class="fab fa-python"></i></div>
+							<div class="tech-name">Python</div>
+						</div>
+						<div class="tech-item">
+							<div class="tech-icon"><img src="https://cdn.simpleicons.org/pytorch/EE4C2C" alt="PyTorch logo" style="width: 1em; height: 1em;"></div>
+							<div class="tech-name">PyTorch</div>
+						</div>
+						<div class="tech-item">
+							<div class="tech-icon"><i class="fas fa-bolt"></i></div>
+							<div class="tech-name">Spark</div>
+						</div>
+						<div class="tech-item">
+							<div class="tech-icon"><i class="fas fa-code"></i></div>
+							<div class="tech-name">Scala</div>
+						</div>
+						<div class="tech-item">
+							<div class="tech-icon"><i class="fab fa-aws"></i></div>
+							<div class="tech-name">AWS</div>
+						</div>
+						<div class="tech-item">
+							<div class="tech-icon"><i class="fas fa-cubes"></i></div>
+							<div class="tech-name">Kubernetes</div>
+						</div>
+						<div class="tech-item">
+							<div class="tech-icon"><i class="fas fa-database"></i></div>
+							<div class="tech-name">SQL</div>
+						</div>
+						<div class="tech-item">
+							<div class="tech-icon"><i class="fas fa-diagram-project" aria-label="DAG icon"></i></div>
+							<div class="tech-name">Airflow</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Projects Section -->
+	<section id="projects" class="section" style="background: var(--bg-secondary);">
+		<div class="container">
+			<h2 class="section-title fade-in">Featured Projects</h2>
+			<div class="row g-4">
+				<div class="col-lg-6 fade-in">
+					<div class="premium-card">
+						<h3 class="mb-3">🔇 Silencing the Foul Utterances</h3>
+						<p class="mb-4">
+							Real-time audio censoring pipeline that detects profanity in streaming audio and inserts
+							censor beeps on-the-fly. Built a training set by multithreading Google Text-to-Speech over a labeled
+							Kaggle Dota chat corpus, converting audio to spectrograms in NumPy/Librosa and training PyTorch CNN/RNN
+							models for word-boundary profanity detection. Introduced the idea of "Tall & Skinny" convolutions of varying widths to
+							cature the positional information.
+						</p>
+						
+						<div class="code-preview">
+		<span class="keyword">class</span> <span class="function">ProfanityDetector</span>(nn.Module):
+			<span class="keyword">def</span> <span class="function">__init__</span>(self):
+				<span class="keyword">super</span>().<span class="function">__init__</span>()
+				self.conv = nn.Sequential(
+					nn.Conv2d(1, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2),
+					nn.Conv2d(16, 32, 3, padding=1), nn.ReLU(), nn.AdaptiveAvgPool2d(1),
+				)
+				self.head = nn.Linear(32, 2)
+
+			<span class="keyword">def</span> <span class="function">forward</span>(self, mel):
+				<span class="comment"># mel: [B, 1, n_mels, time]</span>
+				x = self.conv(mel)
+				x = x.flatten(1)
+				<span class="keyword">return</span> self.head(x)
+						</div>
+
+						<div class="mt-4">
+							<span class="achievement-badge">
+								<i class="fas fa-bolt"></i>
+								Audio ML Regression Model
+							</span>
+							<span class="achievement-badge">
+								<i class="fas fa-file-audio"></i>
+								212k+ Generated Audio Samples
+							</span>
+							<span class="achievement-badge">
+								<i class="fas fa-diagram-project"></i>
+								Multithreaded Google TTS Pipeline
+							</span>
+						</div>
+						
+						<div class="mt-3 mb-3">
+							<span class="tech-badge">PyTorch</span>
+							<span class="tech-badge">Signal Processing</span>
+							<span class="tech-badge">Librosa</span>
+							<span class="tech-badge">Google TTS</span>
+						</div>
+
+						<a href="https://github.com/dallingordon/DL_STFU" class="btn btn-outline-primary">
+							<i class="fab fa-github me-2"></i>View Source Code
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-6 fade-in">
+					<div class="premium-card">
+						<h3 class="mb-3">🎯 Deep Learning Go AI</h3>
+						<p class="mb-4">
+							Competition-grade Go playing bot combining Monte Carlo Tree Search with neural networks. Implemented naive, minimax, and MCTS algorithms to compare performance.
+							Used Zobrist hashing to compact state keys and accelerate MCTS, and applied Alpha-Beta pruning to further reduce the search space.
+							Achieved amatuer Dan level performance in online tournaments, demonstrating significant improvement in game theory understanding over naive algorithms.
+						</p>
+
+						<div class="code-preview">
+<span class="keyword">class</span> <span class="function">AlphaGoZero</span>:
+    <span class="keyword">def</span> <span class="function">mcts_search</span>(self, state, simulations=<span class="string">800</span>):
+        <span class="comment"># Advanced MCTS with neural network guidance</span>
+        <span class="keyword">for</span> _ in <span class="function">range</span>(simulations):
+            leaf = self.select_leaf(state)
+            value, priors = self.network.predict(leaf)
+            self.backup(leaf, value)
+        
+        <span class="keyword">return</span> self.get_action_probs(state)
+						</div>
+
+						<div class="mt-4">
+							<span class="achievement-badge">
+								<i class="fas fa-trophy"></i>
+								Amateur Dan Level Performance
+							</span>
+							<span class="achievement-badge">
+								<i class="fas fa-brain"></i>
+								Monte Carlo Tree Search
+							</span>
+							<span class="achievement-badge">
+								<i class="fas fa-cloud"></i>
+								AWS Deployment
+							</span>
+						</div>
+
+						<div class="mt-3 mb-3">
+							<span class="tech-badge">PyTorch</span>
+							<span class="tech-badge">Game Theory</span>
+							<span class="tech-badge">Zobrist Hashing</span>
+							<span class="tech-badge">Alpha-Beta Pruning</span>
+						</div>
+
+						<a href="https://github.com/Nkonovalenko/GoAI" class="btn btn-outline-primary">
+							<i class="fab fa-github me-2"></i>View Source Code
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Experience Section -->
+	<section id="experience" class="section">
+		<div class="container">
+			<h2 class="section-title fade-in">Professional Experience</h2>
 			
-			// Middle glow
-			ctx.beginPath();
-			ctx.arc(point.x, point.y, point.size * 1.5, 0, Math.PI * 2);
-			ctx.fillStyle = `rgba(255, 255, 255, ${point.brightness * 0.3})`;
-			ctx.fill();
+			<div class="experience-timeline">
+				<div class="experience-item fade-in">
+					<div class="experience-date">2023 - Present</div>
+					<h3 class="experience-title">Machine Learning Engineer</h3>
+					<div class="experience-company">Roblox Corporation • San Mateo, CA</div>
+					<p class="mb-3">
+						MLE on the <strong>Discovery Home Modeling Team</strong> for the recommendation system serving 100M+ daily active users across Home, Search, and Charts. 
+						Spearheading ML initiatives that directly impact platform revenue, user engagement, and retention metrics. 
+						Leading cross-functional collaboration efforts with Product, Engineering, and Data Science teams.
+					</p>
+					<ul class="mb-4">
+						<li>Designed and deployed multiple production ML models with statistically significant metric improvements</li>
+						<li>Engineered 20+ new features that improved user engagement and content diversity metrics</li>
+						<li>Improved ML understandability with 10+ analysis tools to optimize oncall debugging efficiency</li>
+						<li>Applied Computer Vision techniques to evaluate content quality</li>
+					</ul>
+					<div>
+						<span class="tech-badge">PyTorch</span>
+						<span class="tech-badge">Spark</span>
+						<span class="tech-badge">Scala</span>
+						<span class="tech-badge">Kubernetes</span>
+						<span class="tech-badge">Airflow</span>
+						<span class="tech-badge">A/B Testing</span>
+						<span class="tech-badge">ML Explainability</span>
+					</div>
+				</div>
+
+				<div class="experience-item fade-in">
+					<div class="experience-date">Summer 2022</div>
+					<h3 class="experience-title">Software Engineer Intern</h3>
+					<div class="experience-company">Microsoft Corporation • Bellevue, WA</div>
+					<p class="mb-3">
+						Developed enterprise-grade automation tools for internal teams, focusing on secure data processing 
+						and workflow optimization. Built full-stack solutions handling sensitive user data across distributed systems.
+					</p>
+					<ul class="mb-4">
+						<li>Architected React-Redux frontend with C# backend processing 100K+ daily transactions</li>
+						<li>Implemented secure data pipelines with Kusto for real-time analytics</li>
+						<li>Reduced manual processing time by 60% through intelligent automation</li>
+					</ul>
+					<div>
+						<span class="tech-badge">TypeScript</span>
+						<span class="tech-badge">React</span>
+						<span class="tech-badge">C#</span>
+						<span class="tech-badge">Azure</span>
+						<span class="tech-badge">Kusto</span>
+					</div>
+				</div>
+
+				<div class="experience-item fade-in">
+					<div class="experience-date">Summer 2021</div>
+					<h3 class="experience-title">Software Development Engineer Intern</h3>
+					<div class="experience-company">Amazon Lab126 • Sunnyvale, CA</div>
+					<p class="mb-3">
+						Built high-performance automated testing platform for Computer Vision and Camera teams. 
+						Optimized data processing pipelines for edge computing environments with strict resource constraints.
+					</p>
+					<ul class="mb-4">
+						<li>Engineered automated testing platform processing 0.5 GB/s on ARM architecture</li>
+						<li>Optimized multithreaded data pipeline reducing CPU usage by 40%</li>
+						<li>Implemented edge-optimized algorithms for real-time computer vision processing</li>
+					</ul>
+					<div>
+						<span class="tech-badge">Java</span>
+						<span class="tech-badge">Computer Vision</span>
+						<span class="tech-badge">ARM</span>
+						<span class="tech-badge">Multithreading</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="section" style="background: var(--bg-secondary);">
+		<div class="container text-center">
+			<h2 class="section-title fade-in">Let's Build Something Amazing</h2>
+			<p class="lead fade-in mb-5" style="max-width: 600px; margin: 0 auto;">
+				Interested in discussing Machine Learning, recommendation systems, or potential collaborations? 
+				I'm always excited to connect with fellow enthusiasts and explore innovative projects.
+			</p>
+			<div class="social-links fade-in">
+				<a href="mailto:nkono@umich.edu" class="social-link">
+					<i class="fas fa-envelope"></i>
+				</a>
+				<a href="https://linkedin.com/in/NKonovalenko" class="social-link">
+					<i class="fab fa-linkedin"></i>
+				</a>
+				<a href="https://github.com/NKonovalenko" class="social-link">
+					<i class="fab fa-github"></i>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Theme Toggle -->
+	<button class="theme-toggle" id="themeToggle">
+		<i class="fas fa-moon"></i>
+	</button>
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Custom JS -->
+	<script>
+		// Theme toggle
+		const themeToggle = document.getElementById('themeToggle');
+		const html = document.documentElement;
+		const icon = themeToggle.querySelector('i');
+
+		themeToggle.addEventListener('click', () => {
+			const currentTheme = html.getAttribute('data-bs-theme');
+			const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 			
-			// Core point
-			ctx.beginPath();
-			ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
-			ctx.fillStyle = `rgba(255, 255, 255, ${point.brightness})`;
-			ctx.fill();
+			html.setAttribute('data-bs-theme', newTheme);
+			icon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
 		});
-		
-		requestAnimationFrame(animate);
-	}
 
-	animate();
-</script>
+		// Scroll animations
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+				}
+			});
+		}, { threshold: 0.1 });
+
+		document.querySelectorAll('.fade-in').forEach((element) => {
+			observer.observe(element);
+		});
+
+		// Smooth scrolling
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute('href'));
+				if (target) {
+					target.scrollIntoView({ behavior: 'smooth' });
+				}
+			});
+		});
+
+		// No additional JavaScript needed - using pure CSS hover effects
+	</script>
 </body>
 </html>
